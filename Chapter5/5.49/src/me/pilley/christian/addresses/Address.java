@@ -1,7 +1,9 @@
 package me.pilley.christian.addresses;
 
 import java.util.Scanner;
-
+//name: Christian Pilley
+//desc: address substringer
+//date: 10/5/18 :: 03:17
 
 public class Address {
    public static void main(String[] args){
