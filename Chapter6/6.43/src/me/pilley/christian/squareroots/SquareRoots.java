@@ -1,8 +1,9 @@
 package me.pilley.christian.squareroots;
 
 import java.util.Scanner;
-
-
+//Name: Christian Pilley
+//Date: 10/13/18 :: 1:13
+//Desc: Calculates how many times a square root can be done before it drops below 1.01
 
 public class SquareRoots {
 	

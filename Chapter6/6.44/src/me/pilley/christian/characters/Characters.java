@@ -1,7 +1,9 @@
 package me.pilley.christian.characters;
 
 import java.util.Scanner;
-
+//Name: Christian Pilley	
+//Desc: Finds a word with @ in it and then prints it out
+//Date: 10/13/18 :: 01:22am
 public class Characters {
 
 	static Scanner input = new Scanner(System.in);

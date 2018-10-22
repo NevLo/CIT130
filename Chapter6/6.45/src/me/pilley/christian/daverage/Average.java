@@ -3,7 +3,9 @@ package me.pilley.christian.daverage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
-
+//Name: Christian Pilley
+//Desc: Finds the average of all the double values in Input.txt
+//Date: 10/13/18 :: 1:29am
 public class Average {
 
 	public static void main(String[] args) throws IOException {
