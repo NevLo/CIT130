@@ -1,4 +1,5 @@
-####Introduction####
+Introduction
+======
    For this midterm, you will be creating a fully functioning JAVA application 
    with the following specs: (each item is worth 15 points, for a total of 
    150 points for the midterm. Each item listed is graded independently from 
@@ -6,7 +7,8 @@
    The midterm MUST be submitted on time. This module will lock at 8:20 PM 
    and no midterms will be accepted after that time.
 
-###Instructions###
+Instructions
+------
    1) Using NetBeans, create a new project called MidTerm, add the appropriate 
       packages for scanner and random, and create a scanner and random object 
       at the very beginning of your main method. Place a multi line comment at 
