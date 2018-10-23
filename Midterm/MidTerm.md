@@ -1,4 +1,4 @@
-Introduction
+####Introduction####
    For this midterm, you will be creating a fully functioning JAVA application 
    with the following specs: (each item is worth 15 points, for a total of 
    150 points for the midterm. Each item listed is graded independently from 
@@ -6,7 +6,7 @@ Introduction
    The midterm MUST be submitted on time. This module will lock at 8:20 PM 
    and no midterms will be accepted after that time.
 
-Instructions
+###Instructions###
    1) Using NetBeans, create a new project called MidTerm, add the appropriate 
       packages for scanner and random, and create a scanner and random object 
       at the very beginning of your main method. Place a multi line comment at 
@@ -21,11 +21,11 @@ Instructions
       the main method. Greet the user by name and display a menu asking them 
       to make a selection: 
 
-         1 - Create nickname 
-         2 - Test your IQ 
-         3 - Display a table
-         4 - Read from a file 
-         5 - Exit
+         1 - Create nickname  
+         2 - Test your IQ  
+         3 - Display a table  
+         4 - Read from a file  
+         5 - Exit  
 
    4) In your main method setup a do-while. Decide how you will keep the do 
       while running. (hint: see #3 above...) In the do-while you should 
@@ -63,9 +63,9 @@ Instructions
       than 1 or greater than 10 then set it to 10. Use for loops to display an 
       "n x n" grid of the letter entered. So 'A' and '3' would look like this:
 
-         A A A
-	 A A A
-	 A A A
+         A A A  
+	 A A A  
+	 A A A  
 
    8) When "4" is selected from the menu, open the numbers.txt file, read in the 
       values and display the sum to the user. (You can create a new Scanner 
