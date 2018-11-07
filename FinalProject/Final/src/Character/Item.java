@@ -1,9 +1,15 @@
 package Character;
 
 public class Item {
+	
+	public enum Rarity{
+		common, rare, epic, legendary
+	}
+	
 	private String name;
 	private int count;
-	
+	private Rarity rarity;
+	private float value;
 	public Item() {
 		
 	}
