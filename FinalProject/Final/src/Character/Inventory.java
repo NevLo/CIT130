@@ -10,7 +10,6 @@ public class Inventory {
 	private final int DEFAULT_INVENTORY_SIZE = 10;
 
 	@SuppressWarnings("serial")
-	private final ArrayList<Item> DEFAULT_INVENTORY = new ArrayList<Item>() {{
 	private final ArrayList<Item> DEFAULT_INVENTORY = new ArrayList<Item>() {
 		{
 			add(new Item("Rope", 50));
