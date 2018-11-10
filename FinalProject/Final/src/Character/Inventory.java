@@ -12,6 +12,7 @@ public class Inventory {
         public enum Sort{Name, Rarity, Value, StackSize};
         private final int DEFAULT_INVENTORY_SIZE = 10;
 	
+	@SuppressWarnings("serial")
 	private final ArrayList<Item> DEFAULT_INVENTORY = new ArrayList<Item>() {{
 			add(new Item("Rope", 50));
 			add(new Item("Torch"));

@@ -20,6 +20,7 @@ package FinalProject;
 import Character.Inventory;
 import Character.Item;
 import Character.Character;
+@SuppressWarnings("unused")
 public class Main {
 	public static void main(String[] args) {
                 Character mainChar = new Character();
