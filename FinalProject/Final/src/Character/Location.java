@@ -7,7 +7,7 @@ import Utils.intDuo;
  * @author Christian_Pilley
  */
 public class Location {
-    private intDuo pos;
+	private intDuo pos;
 
 	public intDuo getPos() {
 		return pos;
@@ -17,7 +17,4 @@ public class Location {
 		this.pos = pos;
 	}
 
-
-
-    
 }
