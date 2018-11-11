@@ -8,15 +8,20 @@ public class Inventory {
 	};
 
 	private final int DEFAULT_INVENTORY_SIZE = 10;
-
+	private final String ROPE = "Rope";
+	private final String TORCH = "Torch";
+	private final String KNIFE = "Knife";
+	private final String RATIONS = "Rations";
+	private final String MATCHES = "Matches";
+	private final String EMPTY_INVENTORY = "Empty Inventory";
 	@SuppressWarnings("serial")
 	private final ArrayList<Item> DEFAULT_INVENTORY = new ArrayList<Item>() {
 		{
-			add(new Item("Rope", 50));
-			add(new Item("Torch"));
-			add(new Item("Knife"));
-			add(new Item("Rations", 3));
-			add(new Item("Matches", 50));
+			add(new Item(ROPE, 50));
+			add(new Item(TORCH));
+			add(new Item(KNIFE));
+			add(new Item(RATIONS, 3));
+			add(new Item(MATCHES, 50));
 		}
 	};
 	ArrayList<ArrayList<Item>> Inventory;
@@ -31,8 +36,19 @@ public class Inventory {
 		size = DEFAULT_INVENTORY_SIZE;
 
 	}
+	public Inventory(ArrayList<Item> items, int size){
+		Inventory = new ArrayList<>();
+		
+	}
 
 	public void setDefaultInventory() {
+		clearInventory();
+		if(Inventory.size() != size) {
+			int temp = Inventory.size();
+			for(int i = 0; i < size - temp; i++) {
+				Inventory.add(new ArrayList<Item>());
+			}
+		}
 		for (int i = 0; i < DEFAULT_INVENTORY.size(); i++) {
 			Inventory.get(0).add(DEFAULT_INVENTORY.get(i));
 			numItemStacks++;
@@ -69,6 +85,17 @@ public class Inventory {
 				if (Inventory.get(x).get(y).equals(i.Inventory.get(x).get(y))) {
 					Item temp = Inventory.get(x).get(y);
 					temp.setCount(temp.getCount() + i.Inventory.get(x).get(y).getCount());
+					i.numItemStacks--;
+				} else {
+					for(int j = 0; j < i.size; j++) {
+						for(int k = 0; k < i.Inventory.get(j).size(); k++) {
+							if (Inventory.get(x).get(y).equals(i.Inventory.get(j).get(k))) {
+								Item temp = Inventory.get(j).get(k);
+								temp.setCount(temp.getCount() + i.Inventory.get(x).get(y).getCount());
+								i.numItemStacks--;
+							}
+						}
+					}
 				}
 			}
 		}
@@ -79,7 +106,7 @@ public class Inventory {
 	 */
 	public void displayInventory() {
 		if (numItemStacks == 0) {
-			System.out.println("Empty Inventory");
+			System.out.println(EMPTY_INVENTORY);
 			return;
 		}
 		int counter = 0;
@@ -115,7 +142,7 @@ public class Inventory {
 		}
 		return false;
 	}
-
+	
 	public void sortInventory(Sort sort) {
 		switch (sort) {
 		case Name:
@@ -124,7 +151,7 @@ public class Inventory {
 		case StackSize:
 		}
 	}
-
+	@Override
 	public boolean equals(Object o) {
 		if (o instanceof Inventory) {
 			Inventory temp = (Inventory) o;
@@ -137,7 +164,6 @@ public class Inventory {
 					}
 				}
 			}
-
 			return true;
 		}
 		return false;

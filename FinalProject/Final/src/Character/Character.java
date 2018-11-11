@@ -41,6 +41,16 @@ public class Character {
 		inventory = new Inventory();
 		inventory.setDefaultInventory();
 	}
+	public Character(Inventory inventory) {
+		this.inventory = inventory;
+	}
+	public Character(Inventory inventory, int health, String name, Location loc, boolean npc) {
+		this.inventory = inventory;
+		this.health = health;
+		this.name = name;
+		this.loc = loc;
+		this.npc = npc;
+	}
 
 	public String getName() {
 		return name;

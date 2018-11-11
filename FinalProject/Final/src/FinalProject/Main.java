@@ -24,6 +24,9 @@ import Character.Character;
 @SuppressWarnings("unused")
 public class Main {
 	public static void main(String[] args) {
+		Inventory inv = new Inventory();
+		
+		
 		Character mainChar = new Character();
 		Character sideChar = new Character();
 		mainChar.getInventory().displayInventory();
