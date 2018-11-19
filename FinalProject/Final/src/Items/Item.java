@@ -1,17 +1,17 @@
-package Character;
+package Items;
 
-import static Character.Item.Rarity.common;
+import static Items.Item.Rarity.common;
 
 public class Item {
 
-	public enum Rarity {
+	protected enum Rarity {
 		common, rare, epic, legendary
 	}
 
-	private String name;
-	private int count;
-	private Rarity rarity;
-	private float value;
+	protected String name;
+	protected int count;
+	protected Rarity rarity;
+	protected float value;
 
 	public Item() {
 

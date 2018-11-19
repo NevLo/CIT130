@@ -1,5 +1,7 @@
 package Character;
 
+import Exceptions.InventoryTooSmallException;
+
 /**
  * 
  * @author NevLo
@@ -7,7 +9,7 @@ package Character;
  */
 public class Character {
 
-	private Inventory inventory;
+	private CharacterInventory inventory;
 	private int health;
 	private String name;
 	private Location loc;
@@ -17,7 +19,7 @@ public class Character {
 		return inventory;
 	}
 
-	public void setInventory(Inventory inventory) {
+	public void setInventory(CharacterInventory inventory) {
 		this.inventory = inventory;
 	}
 
@@ -27,24 +29,34 @@ public class Character {
 			if (!npc) {
 				// Die
 			} else {
-				attacker.inventory.addToInventory(this.inventory);
+				for(int i = 0; i < inventory.height; i++) {
+					for(int j = 0; j < inventory.width; j++) {
+						attacker.inventory.addToInventory(this.inventory.getItemAt(i,j));	
+					}
+				}
+				
 			}
 		}
 	}
-
+	
+	
 	public void setNPC(boolean npc) {
 		this.npc = npc;
 	}
 
 	public Character() {
 		health = 10;
-		inventory = new Inventory();
-		inventory.setDefaultInventory();
+		inventory = new CharacterInventory();
+		try {
+			inventory.setDefaultInventory();
+		}catch(InventoryTooSmallException e) {
+			e.printStackTrace();
+		}	
 	}
-	public Character(Inventory inventory) {
+	public Character(CharacterInventory inventory) {
 		this.inventory = inventory;
 	}
-	public Character(Inventory inventory, int health, String name, Location loc, boolean npc) {
+	public Character(CharacterInventory inventory, int health, String name, Location loc, boolean npc) {
 		this.inventory = inventory;
 		this.health = health;
 		this.name = name;
