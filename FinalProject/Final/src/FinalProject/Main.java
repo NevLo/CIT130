@@ -20,36 +20,37 @@
  */
 package FinalProject;
 
-import Character.Inventory;
-import Exceptions.InventoryTooSmallException;
-import Items.Item;
+import Character.*;
 import Character.Character;
-import Character.CharacterInventory;
+import Exceptions.*;
+import Items.*;
+import Utils.*;
 import java.util.Scanner;
+
 @SuppressWarnings("unused")
 public class Main {
-	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		Character mainChar = new Character();
-		Character sideChar = new Character();
-		System.out.println("Space 1");
-		mainChar.getInventory().displayInventory();
-		sideChar.getInventory().displayInventory();
-		System.out.println("Space 2");
-		sideChar.setNPC(true);
-		System.out.println("Space 3");
-		sideChar.takeDamage(20, mainChar);
-		System.out.println("Space 4");
-		
-		System.out.println("Main Character killed Side Character");
-		mainChar.getInventory().displayInventory();
-		
-		
-		/*
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        Character mainChar = new Character();
+        Character sideChar = new Character();
+        System.out.println("Space 1");
+        mainChar.getInventory().displayInventory();
+        sideChar.getInventory().displayInventory();
+        System.out.println("Space 2");
+        sideChar.setNPC(true);
+        System.out.println("Space 3");
+        sideChar.takeDamage(20, mainChar);
+        System.out.println("Space 4");
+
+        System.out.println("Main Character killed Side Character");
+        mainChar.getInventory().displayInventory();
+        
+        /*
 		 * Inventory inv = new Inventory(); inv.setDefaultInventory();
 		 * inv.displayInventory(); Item matches = new Item("Matches", 15);
 		 * inv.addToInventory(matches); inv.displayInventory(); inv.clearInventory();
 		 * inv.displayInventory();
-		 */
-	}
+         */
+    }
 }
