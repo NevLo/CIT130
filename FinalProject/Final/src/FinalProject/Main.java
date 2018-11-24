@@ -13,44 +13,55 @@
  *      at this point, main is just being used to test my new additions to the base classes.
  *      added a way for a character to take damage, and if the character dies, the inventory is given to the attacker
  *      added a way to set an item to null, will make a nullItem class later.
+ *      
  * 11/9 Added some convenience methods to inventory class.
+ * 
  * 11/19 HOLY SHIT WHAT A REWRITE. i rewrote the inventory class to break down into a character inventory and a chest inventory.
  * 		got rid of the ArrayList<ArrayList<Item>> that was my way of storing the items, and replaced with Item[][].
  * 
+ * 11/24 Worked on finishing the Inventory class. added some more item subclasses, potion and weapon. potions will be usable items 
+ * 		that can apply different effects. as of right now, i can have infinite items/potions/weapons, but i may hardcode in my items
+ * 		 in the future and store them in a file or something, that way i can have more control and so i can make items do different things. 
+ * 		Also added the GameManager finally. as of right now it doesnt do much, but you can tell it when the game is supposed to end, 
+ * 		and set the Playable Character. i might go back and redo these update logs into a form of:
+ * 			+: feature
+ * 			-: removed thing
+ * 			^: rewrite
+ * 			B: bug fix
+ * 			R: move/rename something.
+ * 		might make it display that somewhere too. who knows. if you are reading this, it didnt happen (yet) or are looking at older 
+ * 		versions of my code (please dont do that, its ugly in here)
  */
 package FinalProject;
 
 import Character.*;
 import Character.Character;
 import Exceptions.*;
+import GameManager.GameManager;
 import Items.*;
 import Utils.*;
 import java.util.Scanner;
-
+import Animation.*;
 @SuppressWarnings("unused")
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        Character mainChar = new Character();
-        Character sideChar = new Character();
-        System.out.println("Space 1");
-        mainChar.getInventory().displayInventory();
-        sideChar.getInventory().displayInventory();
-        System.out.println("Space 2");
-        sideChar.setNPC(true);
-        System.out.println("Space 3");
-        sideChar.takeDamage(20, mainChar);
-        System.out.println("Space 4");
+    	GameManager.setPlayer(new Character());
+    	CharacterInventory inv = new CharacterInventory();
+    	try {
+			inv.setDefaultInventory();
+		} catch (InventoryTooSmallException e) {
+			
+			e.printStackTrace();
+		}
+    	inv.displayInventory();
+    	inv.clearInventory();
+    	inv.displayInventory();
 
-        System.out.println("Main Character killed Side Character");
-        mainChar.getInventory().displayInventory();
-        
-        /*
-		 * Inventory inv = new Inventory(); inv.setDefaultInventory();
-		 * inv.displayInventory(); Item matches = new Item("Matches", 15);
-		 * inv.addToInventory(matches); inv.displayInventory(); inv.clearInventory();
-		 * inv.displayInventory();
-         */
+    }
+    public static void display1DItemArray(Item[] items) {
+    	for(Item i : items) {
+    		System.out.println(i);
+    	}
     }
 }

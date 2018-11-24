@@ -1,5 +1,5 @@
 package Utils;
 
-public class Sort {
-
+public enum Sort {
+	 Name, Rarity, Value, StackSize   
 }

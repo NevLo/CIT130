@@ -1,12 +1,10 @@
 package Items;
 
-import static Items.Item.Rarity.common;
+import Utils.Rarity;
 
 public class Item {
 
-    protected enum Rarity {
-        common, rare, epic, legendary
-    }
+   
 
     protected String name;
     protected int count;
@@ -20,13 +18,16 @@ public class Item {
     public Item(String name) {
         this.name = name;
         this.count = 1;
+        value = 0;
+        
+		rarity = Rarity.common;
     }
 
     public Item(String name, int count) {
         this.name = name;
         this.count = count;
         value = 0;
-        rarity = common;
+        rarity = Rarity.common;
     }
 
     public String getItemName() {
@@ -42,15 +43,15 @@ public class Item {
     }
 
     public boolean equals(Item item) {
-        return item.name.equals(this.name) && item.rarity == this.rarity && item.value == this.value;
+        return item.name.equals(this.name)
+        		&& item.rarity == this.rarity 
+        		&& item.value == this.value;
     }
 
-    public void setNull() {
-        name = "";
-        value = 0;
-        rarity = common;
-        count = 0;
-
+  
+    @Override
+    public String toString() {
+    	return rarity + ": " + name + " x" + count;  
     }
 
 }

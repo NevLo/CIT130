@@ -7,6 +7,14 @@ public class Frame {
     public Frame(){
         
     }
+
+	public char[][] getFrame() {
+		return frame;
+	}
+
+	public void setFrame(char[][] frame) {
+		this.frame = frame;
+	}
     
     
     

@@ -1,6 +1,6 @@
 package Character;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 
 import Exceptions.InventoryTooSmallException;
@@ -9,13 +9,8 @@ import Items.NullItem;
 import Utils.intDuo;
 
 public abstract class Inventory {
-    //NEW STUFF --------------------------------------------------------------------------------------------
-
     protected Item[][] inv;
 
-    protected enum Sort {
-        Name, Rarity, Value, StackSize
-    };
 
     protected final String ROPE = "Rope";
     protected final String TORCH = "Torch";
@@ -33,9 +28,46 @@ public abstract class Inventory {
 
     public abstract void setDefaultInventory() throws InventoryTooSmallException;
 
-    public abstract void addToInventory(Item item);
+    public void addToInventory(Item item) {
+    	//If the inventory isnt full
+        if (numItemStacks != width * height) {
+        	//if there are items in the inventory
+			if (numItemStacks != 0) {
+				for (int i = 0; i < height; i++) {
+					for (int j = 0; j < width; j++) {
+						//if the inventory space is a null item
+						if (inv[i][j] instanceof NullItem || inv[i][j] == null) {
+							continue;
+						}
+						//if the items are equal
+						if (inv[i][j].equals(item)) {
+							inv[i][j].setCount(inv[i][j].getCount() + item.getCount());
+							return;
+						}
+					}
+				}
+				//if it gets to here, it is a non-matching item and will be added to the first available slot.
+				//numstacks will be incremented
+				for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++) {
+                        if (inv[i][j] instanceof NullItem) {
+                            inv[i][j] = item;
+                            numItemStacks++;
+                            return;
+                            
+                        }
+                    }
+                }
+			}
+			//else inventory is empty
+            else{
+              inv[0][0] = item;  
+            }
+        }
+    }
 
     public void clearInventory() {
+    	
         for (int i = 0; i < height; i++) {
             Arrays.fill(inv[i], new NullItem());
         }
@@ -71,11 +103,13 @@ public abstract class Inventory {
         }
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                if (inv[i][j] instanceof NullItem) {
+                
+            	if (inv[i][j] instanceof NullItem) {
                     continue;
                 }
-                Item temp = inv[i][j];
-                System.out.print(temp.getItemName() + " x" + temp.getCount() + "   ");
+                
+            	Item temp = inv[i][j];
+                System.out.print(temp.getItemName() + " x" + temp.getCount() + "\t");
             }
             System.out.println();
         }
@@ -92,9 +126,12 @@ public abstract class Inventory {
                 }
             }
         }
+        //This will add each item to the target inventory
         if(invent.numItemStacks != 0){
-            for(int i = 0; i < height; i++){
-                
+            for(int i = 0; i < invent.height; i++){
+                for(int j = 0; j < invent.width; j++) {
+                	addToInventory(invent.inv[i][j]);
+                }                    
             }
         }
     }
@@ -110,5 +147,6 @@ public abstract class Inventory {
         }
         return temp;
     }
+   
 
 }

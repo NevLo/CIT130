@@ -3,6 +3,7 @@ package Character;
 import Exceptions.InventoryTooSmallException;
 import Items.Item;
 import Items.NullItem;
+import Utils.Sort;
 
 public class CharacterInventory extends Inventory {
 
@@ -20,6 +21,12 @@ public class CharacterInventory extends Inventory {
         inv = new Item[DEFAULT_HEIGHT][DEFAULT_WIDTH];
         width = DEFAULT_WIDTH;
         height = DEFAULT_HEIGHT;
+        for(int i = 0; i < height; i++) {
+        	for(int j = 0; j < height; j++) {
+            	inv[i][j] = new NullItem();
+            }
+        }
+        numItemStacks = 0;
     }
 
     @Override
@@ -50,38 +57,6 @@ public class CharacterInventory extends Inventory {
         numItemStacks = 5;
     }
 
-    @Override
-    public void addToInventory(Item item) {
-        if (numItemStacks != width * height) {
-            boolean added = false;
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    if(inv[i][j] instanceof NullItem){
-                        continue;
-                    }
-                    if (inv[i][j].equals(item)) {
-                        inv[i][j].setCount(inv[i][j].getCount() + item.getCount());
-                        added = true;
-                        break;
-                    }
-                }
-                if (added) {
-                        break;
-                }
-            }
-            if (!added) {
-                for (int i = 0; i < height; i++) {
-                    for (int j = 0; j < width; j++) {
-                        if (inv[i][j] instanceof NullItem) {
-                            inv[i][j] = item;
-                            return;
-                        }
-                    }
-                }
-            }
-            numItemStacks++;
-        }
-    }
 
     public void sortInventory(Sort sort) {
         switch (sort) {

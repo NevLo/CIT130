@@ -1,6 +1,7 @@
 package Character;
 
 import Exceptions.InventoryTooSmallException;
+import GameManager.GameManager;
 
 /**
  *
@@ -14,6 +15,8 @@ public class Character {
     private String name;
     private Location loc;
     private boolean npc;
+    private int speed;
+    
 
     public Inventory getInventory() {
         return inventory;
@@ -27,7 +30,7 @@ public class Character {
         health -= damage;
         if (health <= 0) {
             if (!npc) {
-                // Die
+                GameManager.end();
             } else {
                 for (int i = 0; i < inventory.height; i++) {
                     for (int j = 0; j < inventory.width; j++) {

@@ -4,7 +4,6 @@ import Exceptions.InventoryTooSmallException;
 import Items.Item;
 import Items.NullItem;
 
-@SuppressWarnings("unused")
 public class ChestInventory extends Inventory {
 
     private final int DEFAULT_WIDTH = 8;
@@ -28,9 +27,7 @@ public class ChestInventory extends Inventory {
                 count++;
             }
         } else {
-            if (width * height < 5) {
-                throw new InventoryTooSmallException();
-            } else {
+            if (width * height > 5) {
                 int count = 0;
                 for (int i = 0; i < height; i++) {
                     for (int j = 0; j < width; j++) {
@@ -41,9 +38,11 @@ public class ChestInventory extends Inventory {
                         }
                     }
                 }
+                numItemStacks = 5;
+                return;
             }
+            throw new InventoryTooSmallException();
         }
-        numItemStacks = 5;
     }
 
     @Override
