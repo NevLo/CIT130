@@ -25,9 +25,15 @@ public abstract class Inventory {
     protected int width;
     protected int height;
     protected int numItemStacks = 0;
-
+    /**
+     * sets the default inventory.
+     * @throws InventoryTooSmallException
+     */
     public abstract void setDefaultInventory() throws InventoryTooSmallException;
-
+    /**
+     * Adds an item to the inventory.
+     * @param item
+     */
     public void addToInventory(Item item) {
     	//If the inventory isnt full
         if (numItemStacks != width * height) {
@@ -65,7 +71,9 @@ public abstract class Inventory {
             }
         }
     }
-
+    /**
+     *Empties the Inventory.
+     */
     public void clearInventory() {
     	
         for (int i = 0; i < height; i++) {
@@ -73,7 +81,12 @@ public abstract class Inventory {
         }
         numItemStacks = 0;
     }
-
+    /**
+     * Returns the row and column as an intDuo of the specified item
+     * if the item is not there, it will return -1, -1
+     * @param item
+     * @return intDuo
+     */
     public intDuo searchForItem(Item item) {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
@@ -84,7 +97,12 @@ public abstract class Inventory {
         }
         return new intDuo(-1, -1);
     }
-
+    /**
+     * Returns wether or not the inventory has a specific item.
+     * @param item
+     * @return boolean
+     */
+ 
     public boolean HasItem(Item item) {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
@@ -95,15 +113,18 @@ public abstract class Inventory {
         }
         return false;
     }
-
+    /**
+     * Displays the Inventory to the console window.
+     */
     public void displayInventory() {
+    	//if the inventory is empty, display empty inventory.
         if (numItemStacks == 0) {
             System.out.println(EMPTY_INVENTORY);
             return;
         }
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                
+                //if it is a nullitem, continue.
             	if (inv[i][j] instanceof NullItem) {
                     continue;
                 }
@@ -114,7 +135,10 @@ public abstract class Inventory {
             System.out.println();
         }
     }
-
+    /**
+     * Adds an inventory to an inventory.
+     * @param invent
+     */
     public void addToInventory(Inventory invent){
         //this is for the case that the inventories are the same, but will also occasionally grab some when not the same
         for(int i = 0; i < height; i++){
@@ -135,8 +159,13 @@ public abstract class Inventory {
             }
         }
     }
-
+    /**
+     * Turns the 2D item array into a 1D item array, for use in the inventory sorting.
+     * 
+     * @return Item[]
+     */
     public Item[] to1DArray() {
+    	
         Item[] temp = new Item[width * height];
         int i = 0;
         for (int j = 0; j < height; j++) {

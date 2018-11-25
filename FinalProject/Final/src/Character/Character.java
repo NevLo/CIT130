@@ -28,9 +28,12 @@ public class Character {
 
     public void takeDamage(int damage, Character attacker) {
         health -= damage;
+       //If health falls below zero
         if (health <= 0) {
+        	//if the character is the player
             if (!npc) {
                 GameManager.end();
+                //the character is an NPC.
             } else {
                 for (int i = 0; i < inventory.height; i++) {
                     for (int j = 0; j < inventory.width; j++) {
@@ -45,7 +48,9 @@ public class Character {
     public void setNPC(boolean npc) {
         this.npc = npc;
     }
-
+    public boolean isNPC() {
+    	return npc;
+    }
     public Character() {
         health = 10;
         inventory = new CharacterInventory();
@@ -83,5 +88,13 @@ public class Character {
     public void setLoc(Location loc) {
         this.loc = loc;
     }
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
 
 }
