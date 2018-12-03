@@ -51,6 +51,7 @@ import Utils.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
@@ -59,20 +60,25 @@ import Animation.*;
 public class Main{
 	static char[] cs = {'[',']',' ',' ',' ',' ',' ',' '};
     public static void main(String[] args) throws IOException{
-    	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String line = "";
-
-           while (line.equalsIgnoreCase("quit") == false) {
-               line = in.readLine();
-               System.out.println(line);
-               
-           }
-
-           in.close();
-    	
-    	
-    	
-    	
+    	File[] child = getFilesFromFolder("WeaponArts");
+    	if(child != null) 
+    	for(File f : child) {
+    		System.out.println(f.getName());
+    	}
+    	else {
+    		System.out.println("WRONG PLACE");
+    	}
+    	File[] child1 = new File("C:\\Windows").listFiles();
+		File notePad = child1[47];
+    	if(child1 == null) 
+    		
+    	for(File f : child1) {
+    		System.out.println(f.getName());
+    	}
+    	else {
+    		System.out.println("WRONG PLACE");
+    	}
+    	System.out.println(notePad.getName());
     	/*
     	GameManager.setPlayer(new Character());
     	CharacterInventory inv = new CharacterInventory();
@@ -103,6 +109,49 @@ public class Main{
     	System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
     	
     }
-    
+    public static File[] getFilesFromFolder(String Folder) {
+    	File[] children = new File("Resources\\" + Folder).listFiles();
+		return children;
+    }
     
 }
+
+/*
+ |----|----|----|----|----|----|----|----|
+ | bC | bk | bB | bQ | bK | bB | bk | bC |
+ |----|----|----|----|----|----|----|----|
+ | bP | bP | bP | bP | bP | bP | bP | bP |
+ |----|----|----|----|----|----|----|----|
+ |    |    |    |    |    |    |    |    |
+ |----|----|----|----|----|----|----|----|
+ |    |    |    |    |    |    |    |    |
+ |----|----|----|----|----|----|----|----|
+ |    |    |    |    |    |    |    |    |
+ |----|----|----|----|----|----|----|----|
+ |    |    |    |    |    |    |    |    |
+ |----|----|----|----|----|----|----|----|
+ | wP | wP | wP | wP | wP | wP | wP | wP |
+ |----|----|----|----|----|----|----|----|
+ | wC | wk | wb | wQ | wK | wb | wk | wC |
+ |----|----|----|----|----|----|----|----|
+ 
+ 
+ 
+ 
+ 
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

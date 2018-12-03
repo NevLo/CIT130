@@ -11,10 +11,17 @@ public class GameManager {
 	
 	public static void end() {
 		alive = false;
+		
 	}
 
 	public static void setPlayer(Character character) {
 		mainCharacter = character;	
+	}
+	public static void displayMenu() {
+		
+	}
+	public static void advanceLevel(int numChoices, int choiceIndex) {
+		
 	}
 
 }
