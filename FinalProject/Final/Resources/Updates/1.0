@@ -1,0 +1,16 @@
+[+] Inventory Class
+	-Holds Item objects
+	-Displays Item objects
+	-Default Constructor
+[+] Character Class
+	-Default Constructor
+[+] Item Class
+	-4 basic fields
+		-Name
+		-Value
+		-Count
+			I might split this to be an ItemStack class in the future
+		-Rarity
+			Rarity is a enum in the class.
+	-Default Constructor
+[+] Main Class

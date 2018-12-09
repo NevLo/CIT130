@@ -73,7 +73,9 @@ public class Character {
         this.npc = npc;
     }
 
-    public String getName() {
+    
+
+	public String getName() {
         return name;
     }
 

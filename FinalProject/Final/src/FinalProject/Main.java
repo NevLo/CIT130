@@ -30,7 +30,7 @@
  * 			B: bug fix
  * 			R: move/rename something.
  * 		might make it display that somewhere too. who knows. if you are reading this, it didn't happen (yet) or are looking at older 
- * 		versions of my code (please don't do that, its ugly in here)
+ * 		versions of my code (please don't do that, its ugly in here) -Edit 12/8 or ive done it and am just too lazy to remove these comments (whoops)
  * 11/25 its 3 weeks in and i finally added a menu! wooooooot! so much PROGRESS. current menu options: play, requirements, update log, quit.
  * 		ive tried adding a way to detect the arrow keys in a console app, but from hours of searching through stack overflow, that may not be possible....
  * 
@@ -52,6 +52,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
@@ -59,81 +60,152 @@ import Animation.*;
 @SuppressWarnings("unused")
 public class Main{
 	static char[] cs = {'[',']',' ',' ',' ',' ',' ',' '};
-    public static void main(String[] args) throws IOException{
-    	File[] child = getFilesFromFolder("WeaponArts");
-    	if(child != null) 
-    	for(File f : child) {
-    		System.out.println(f.getName());
-    	}
-    	else {
-    		System.out.println("WRONG PLACE");
-    	}
-    	File[] child1 = new File("C:\\Windows").listFiles();
-		File notePad = child1[47];
-    	if(child1 == null) 
+	static Scanner scan = new Scanner(System.in);
+    public static void main(String...strings){
+    	int choice = 0;
+    	do {
+    	Menu();
+    	
+    	choice = selector();
+    	
+    	}while(choice != 1);
+    }
+    
+    
+    public static int selector() {
+    	
+    	char let = ' ';
+    	if(scan.hasNextLine()) {
+    		let = scan.nextLine().toLowerCase().toCharArray()[0];
+    	}else {
     		
-    	for(File f : child1) {
-    		System.out.println(f.getName());
     	}
-    	else {
-    		System.out.println("WRONG PLACE");
-    	}
-    	System.out.println(notePad.getName());
-    	/*
-    	GameManager.setPlayer(new Character());
-    	CharacterInventory inv = new CharacterInventory();
-    	try {
-			inv.setDefaultInventory();
-		} catch (InventoryTooSmallException e) {
+    	switch(let) {
+    	case 'a':
+    		System.out.print("Please enter a name for your Character + \n>>>");
+    		String name = scan.nextLine();
+    		CharacterInventory c = new CharacterInventory();
+    		try {
+				c.setDefaultInventory();
+			} catch (InventoryTooSmallException e) {e.printStackTrace();}
 			
+    		int health = 20;
+    		Location loc = null;
+    		boolean isNPC = false;
+    		GameManager.play(new Character(c, health, name, loc, isNPC));
+    		return 0;
+    	case 'b':
+    	
+    		displayRequirements();
+    		return 0;
+    	case 'c':
+    	
+    		displayUpdateLogs();
+    		return 0;
+    		
+    	case 'd':
+    	
+    		return 1;
+    	case 't': 
+    		//This method is purely just for testing stuff. i will just fill this method with stuff that i want to test, like new features.
+    		
+    		testingEnvironment();
+    		return 1;
+    	default:
+    		
+    		System.out.println("Please enter correct input");
+    		return 0;
+    	}
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    private static void testingEnvironment() {
+		
+		
+	}
+	private static void displayUpdateLogs() {
+		File[] updates = getFilesFromFolder("Updates");
+		for(File f : updates) {
+			try {
+				Scanner up = new Scanner(f);
+				System.out.println(f.getName());
+				while(up.hasNext()) {
+					System.out.println(up.nextLine());
+				}
+				up.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	private static void displayRequirements() {
+    	File req = new File("Resources\\Requirements.txt");
+		try {
+			Scanner scan = new Scanner(req);
+			while(scan.hasNext()) {
+				System.out.println(scan.nextLine());
+			}
+			
+			scan.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	inv.displayInventory();
-    	inv.clearInventory();
-    	inv.displayInventory();
-		*/
-    }
-    public static void display1DItemArray(Item[] items) {
+		
+	}
+	public static void display1DItemArray(Item[] items) {
     	for(Item i : items) {
     		System.out.println(i);
     	}
     }
-    public static void Menu(char...cs){
+    public static void Menu(){
     	System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
     	System.out.println("Welcome!");
     	System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-    	System.out.println("  " + cs[0] + "Play" + cs[1]);
-    	System.out.println("  " + cs[2] + "Requirements" + cs[3]);
-    	System.out.println("  " + cs[4] + "Update Log" + cs[5]);
-    	System.out.println("  " + cs[6] + "Quit" + cs[7]);
+    	System.out.println("  A] Play");
+    	System.out.println("  B] Requirements");
+    	System.out.println("  C] Update Log");
+    	System.out.println("  D] Quit");
     	System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
     	
     }
     public static File[] getFilesFromFolder(String Folder) {
-    	File[] children = new File("Resources\\" + Folder).listFiles();
-		return children;
+    	
+		return new File("Resources\\" + Folder).listFiles();
+    }
+    public static void displayStrings(String...strings) {
+    	for(String s : strings) {
+    		System.out.println(s);
+    	}
     }
     
 }
-
+// Dont ask me why this is here, i wouldnt be able to tell you.
 /*
- |----|----|----|----|----|----|----|----|
+ +----+----+----+----+----+----+----+----+
  | bC | bk | bB | bQ | bK | bB | bk | bC |
- |----|----|----|----|----|----|----|----|
+ +----+----+----+----+----+----+----+----+
  | bP | bP | bP | bP | bP | bP | bP | bP |
- |----|----|----|----|----|----|----|----|
+ +----+----+----+----+----+----+----+----+
  |    |    |    |    |    |    |    |    |
- |----|----|----|----|----|----|----|----|
+ +----+----+----+----+----+----+----+----+
  |    |    |    |    |    |    |    |    |
- |----|----|----|----|----|----|----|----|
+ +----+----+----+----+----+----+----+----+
  |    |    |    |    |    |    |    |    |
- |----|----|----|----|----|----|----|----|
+ +----+----+----+----+----+----+----+----+
  |    |    |    |    |    |    |    |    |
- |----|----|----|----|----|----|----|----|
+ +----+----+----+----+----+----+----+----+
  | wP | wP | wP | wP | wP | wP | wP | wP |
- |----|----|----|----|----|----|----|----|
+ +----+----+----+----+----+----+----+----+
  | wC | wk | wb | wQ | wK | wb | wk | wC |
- |----|----|----|----|----|----|----|----|
+ +----+----+----+----+----+----+----+----+
  
  
  

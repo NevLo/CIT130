@@ -14,7 +14,8 @@ public class CharacterInventory extends Inventory {
         new Item(TORCH),
         new Item(KNIFE),
         new Item(RATIONS, THREE),
-        new Item(MATCHES, FIFTY)
+        new Item(MATCHES, FIFTY),
+        new Item(GOLD, THREE)
     };
 
     public CharacterInventory() {

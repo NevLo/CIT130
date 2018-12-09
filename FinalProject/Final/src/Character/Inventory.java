@@ -4,6 +4,7 @@ package Character;
 import java.util.Arrays;
 
 import Exceptions.InventoryTooSmallException;
+
 import Items.Item;
 import Items.NullItem;
 import Utils.intDuo;
@@ -44,14 +45,14 @@ public abstract class Inventory {
 						//if the inventory space is a null item
 						if (inv[i][j] instanceof NullItem || inv[i][j] == null) {
 							continue;
-						}
+						} // END if
 						//if the items are equal
 						if (inv[i][j].equals(item)) {
 							inv[i][j].setCount(inv[i][j].getCount() + item.getCount());
 							return;
-						}
-					}
-				}
+						} //END if
+					}// END for
+				} // END for
 				//if it gets to here, it is a non-matching item and will be added to the first available slot.
 				//numstacks will be incremented
 				for (int i = 0; i < height; i++) {
@@ -61,16 +62,16 @@ public abstract class Inventory {
                             numItemStacks++;
                             return;
                             
-                        }
-                    }
-                }
-			}
+                        } // END if
+                    }// END for
+                }// END for
+			}// END if
 			//else inventory is empty
             else{
               inv[0][0] = item;  
-            }
-        }
-    }
+            }// END else
+        }// END if
+    }// END method
     /**
      *Empties the Inventory.
      */
@@ -78,10 +79,10 @@ public abstract class Inventory {
     	
         for (int i = 0; i < height; i++) {
             Arrays.fill(inv[i], new NullItem());
-        }
+        } // END for
         numItemStacks = 0;
-    }
-    /**
+    } // END method
+    /** 
      * Returns the row and column as an intDuo of the specified item
      * if the item is not there, it will return -1, -1
      * @param item
@@ -92,9 +93,9 @@ public abstract class Inventory {
             for (int j = 0; j < width; j++) {
                 if (inv[i][j].equals(item)) {
                     return new intDuo(i, j);
-                }
-            }
-        }
+                } // END if
+            } // END for 
+        } // END for 
         return new intDuo(-1, -1);
     }
     /**
@@ -108,9 +109,9 @@ public abstract class Inventory {
             for (int j = 0; j < width; j++) {
                 if (inv[i][j].equals(item)) {
                     return true;
-                }
-            }
-        }
+                }// END if
+            }// END for
+        }// END for
         return false;
     }
     /**
@@ -121,20 +122,20 @@ public abstract class Inventory {
         if (numItemStacks == 0) {
             System.out.println(EMPTY_INVENTORY);
             return;
-        }
+        } // END if
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 //if it is a nullitem, continue.
             	if (inv[i][j] instanceof NullItem) {
                     continue;
-                }
+                } // END if
                 
             	Item temp = inv[i][j];
                 System.out.print(temp.getItemName() + " x" + temp.getCount() + "\t");
-            }
+            }// END for
             System.out.println();
-        }
-    }
+        } // END for
+    } // END method
     /**
      * Adds an inventory to an inventory.
      * @param invent
@@ -176,6 +177,10 @@ public abstract class Inventory {
         }
         return temp;
     }
+	public Item itemAt(intDuo s) {
+		
+		return inv[s.x][s.y];
+	}
    
 
 }
