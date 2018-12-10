@@ -56,8 +56,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
-import Animation.*;
+
 @SuppressWarnings("unused")
+/**
+ * 
+ * @author Christian Pilley & Kallie Mendoza
+ *
+ */
 public class Main{
 	static char[] cs = {'[',']',' ',' ',' ',' ',' ',' '};
 	static Scanner scan = new Scanner(System.in);
@@ -102,7 +107,7 @@ public class Main{
     	
     		displayUpdateLogs();
     		return 0;
-    		
+    	
     	case 'd':
     	
     		return 1;
@@ -117,14 +122,7 @@ public class Main{
     		return 0;
     	}
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
     private static void testingEnvironment() {
 		
 		
@@ -160,11 +158,18 @@ public class Main{
 		}
 		
 	}
+	/**
+	 * Displays a 1 dimensional array of items.
+	 * @param items
+	 */
 	public static void display1DItemArray(Item[] items) {
     	for(Item i : items) {
     		System.out.println(i);
     	}
     }
+	/**
+	 * Displays the Main Menu
+	 */
     public static void Menu(){
     	System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
     	System.out.println("Welcome!");
@@ -176,10 +181,19 @@ public class Main{
     	System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
     	
     }
+    /**Gets all the files from a specific folder.
+     * 
+     * @param Folder - the folder being looked in
+     * @return Files[] - the files being in the folder
+     */
     public static File[] getFilesFromFolder(String Folder) {
     	
 		return new File("Resources\\" + Folder).listFiles();
     }
+    /**
+     * Displays  strings.
+     * @param strings - strings to be displays
+     */
     public static void displayStrings(String...strings) {
     	for(String s : strings) {
     		System.out.println(s);

@@ -1,5 +1,9 @@
 package Exceptions;
-
+/**
+ * @author Christian Pilley & Kallie Mendoza
+ * 
+ *
+ */
 public class InventoryTooSmallException extends Exception {
 
     /**

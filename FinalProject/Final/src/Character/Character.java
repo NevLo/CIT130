@@ -2,10 +2,11 @@ package Character;
 
 import Exceptions.InventoryTooSmallException;
 import GameManager.GameManager;
+import Items.Weapon;
 
 /**
  *
- * @author NevLo
+ * @author Christian Pilley & Kallie Mendoza
  *
  */
 public class Character {
@@ -71,8 +72,21 @@ public class Character {
         this.name = name;
         this.loc = loc;
         this.npc = npc;
+        this.speed = 10;
     }
-
+    public Weapon getBestWeapon() {
+    	
+    	Weapon[] weapons = inventory.getWeaponArray();
+    	Weapon temp = weapons[0];
+    	for(int i = 0; i < weapons.length; i++) {
+    		if(weapons[i] != null) {
+    		//System.out.println(temp.toString() + "|||| " + weapons[i].toString());
+    		//System.out.println(temp.getDamage() + "|||| " + weapons[i].getDamage());
+    		temp = temp.getDamage() >= weapons[i].getDamage() ? temp : weapons[i];
+    		}
+    	}
+    	return temp;
+    }
     
 
 	public String getName() {
@@ -97,6 +111,11 @@ public class Character {
 
 	public void setSpeed(int speed) {
 		this.speed = speed;
+	}
+
+	public int getHealth() {
+		
+		return health;
 	}
 
 }

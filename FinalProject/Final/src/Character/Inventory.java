@@ -7,8 +7,13 @@ import Exceptions.InventoryTooSmallException;
 
 import Items.Item;
 import Items.NullItem;
+import Items.Weapon;
 import Utils.intDuo;
-
+/**
+ * 
+ * @author Christian Pilley & Kallie Mendoza
+ *
+ */
 public abstract class Inventory {
     protected Item[][] inv;
 
@@ -91,7 +96,19 @@ public abstract class Inventory {
     public intDuo searchForItem(Item item) {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                if (inv[i][j].equals(item)) {
+            	if (inv[i][j] != null)
+            		if (inv[i][j].equals(item)) {
+                    return new intDuo(i, j);
+                } // END if
+            } // END for 
+        } // END for 
+        return new intDuo(-1, -1);
+    }
+    public intDuo searchForItem(Weapon wep) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+            	if (inv[i][j] != null)
+            		if (inv[i][j].equals(wep)) {
                     return new intDuo(i, j);
                 } // END if
             } // END for 
@@ -99,7 +116,7 @@ public abstract class Inventory {
         return new intDuo(-1, -1);
     }
     /**
-     * Returns wether or not the inventory has a specific item.
+     * Returns whether or not the inventory has a specific item.
      * @param item
      * @return boolean
      */
@@ -114,6 +131,17 @@ public abstract class Inventory {
         }// END for
         return false;
     }
+    public boolean HasAWeapon() {
+    	for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (inv[i][j] instanceof Weapon) {
+                    return true;
+                }// END if
+            }// END for
+        }// END for
+        return false;
+    }
+    
     /**
      * Displays the Inventory to the console window.
      */
@@ -178,7 +206,9 @@ public abstract class Inventory {
         return temp;
     }
 	public Item itemAt(intDuo s) {
-		
+		if(s.x < 0 || s.y < 0) {
+			return null;
+		}
 		return inv[s.x][s.y];
 	}
    

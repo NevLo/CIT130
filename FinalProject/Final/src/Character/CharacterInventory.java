@@ -1,23 +1,26 @@
 package Character;
 
+import java.util.Arrays;
+
 import Exceptions.InventoryTooSmallException;
 import Items.Item;
 import Items.NullItem;
+import Items.Weapon;
 import Utils.Sort;
 
 public class CharacterInventory extends Inventory {
-
+	
     private final int DEFAULT_WIDTH = 10;
     private final int DEFAULT_HEIGHT = 10;
     private final Item[] DEFAULT_INVENTORY = new Item[]{
-        new Item(ROPE, FIFTY),
-        new Item(TORCH),
-        new Item(KNIFE),
+       
+        
+        new Weapon(KNIFE, THREE),
         new Item(RATIONS, THREE),
         new Item(MATCHES, FIFTY),
         new Item(GOLD, THREE)
     };
-
+    private Weapon[] weapons = new Weapon[DEFAULT_HEIGHT * DEFAULT_WIDTH];
     public CharacterInventory() {
         inv = new Item[DEFAULT_HEIGHT][DEFAULT_WIDTH];
         width = DEFAULT_WIDTH;
@@ -29,7 +32,14 @@ public class CharacterInventory extends Inventory {
         }
         numItemStacks = 0;
     }
-
+    public CharacterInventory(Item...items) {
+    	inv = new Item[DEFAULT_HEIGHT][DEFAULT_WIDTH];
+        width = DEFAULT_WIDTH;
+        height = DEFAULT_HEIGHT;
+        for(Item i : items) {
+        	addToInventory(i);
+        }
+    }
     @Override
     public void setDefaultInventory() throws InventoryTooSmallException {
         clearInventory();
@@ -71,5 +81,22 @@ public class CharacterInventory extends Inventory {
     public Item getItemAt(int i, int j) {
         return inv[i][j];
     }
+    public Weapon[] getWeaponArray() {
+    	fillWeaponArray();
+		return weapons;
+    	
+    }
+	private void fillWeaponArray() {
+		Arrays.fill(weapons, null);
+		int counter = 0;
+		for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if(inv[i][j] instanceof Weapon) {
+                	weapons[counter] = (Weapon) inv[i][j];
+                	counter++;
+                }
+            }
+        }
+	}
 
 }

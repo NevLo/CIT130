@@ -1,7 +1,11 @@
 package Items;
 
 import Utils.Rarity;
-
+/**
+ * 
+ * @author Christian Pilley & Kallie Mendoza
+ *
+ */
 public class Item {
 
    

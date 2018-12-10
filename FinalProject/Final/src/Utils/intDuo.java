@@ -2,7 +2,7 @@ package Utils;
 
 /**
  *
- * @author Christian_Pilley
+ * @author Christian Pilley & Kallie Mendoza
  */
 public class intDuo {
 

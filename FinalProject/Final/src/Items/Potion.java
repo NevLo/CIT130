@@ -1,7 +1,11 @@
 package Items;
 
 import Utils.Effect;
-
+/**
+ * 
+ * @author Christian Pilley & Kallie Mendoza
+ *
+ */
 public class Potion extends Item {
 	private Effect effect;
 	

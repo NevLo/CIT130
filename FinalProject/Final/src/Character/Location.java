@@ -3,8 +3,8 @@ package Character;
 import Utils.intDuo;
 
 /**
- *
- * @author Christian_Pilley
+ *I dont think this ever gets used. i dont know why its here to be honest... but im scared to remove it.
+ * @author Christian Pilley & Kallie Mendoza
  */
 public class Location {
 

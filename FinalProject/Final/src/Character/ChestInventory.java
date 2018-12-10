@@ -3,7 +3,11 @@ package Character;
 import Exceptions.InventoryTooSmallException;
 import Items.Item;
 import Items.NullItem;
-
+/**
+ * 
+ * @author Christian Pilley & Kallie Mendoza
+ *
+ */
 public class ChestInventory extends Inventory {
 
     private final int DEFAULT_WIDTH = 8;

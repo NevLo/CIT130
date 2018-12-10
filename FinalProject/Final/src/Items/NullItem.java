@@ -1,5 +1,9 @@
 package Items;
-
+/**
+ * 
+ * @author Christian Pilley & Kallie Mendoza
+ *
+ */
 public class NullItem extends Item {
 
     public NullItem() {
