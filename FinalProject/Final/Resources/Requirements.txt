@@ -1,30 +1,67 @@
 1. Comments throughout the entire project pointing out where each requirement was met. (10 points)
+This was done, literally EVERYWHERE. and here. its easier to see here.
+
 
 2. For, while, do/while, and enhanced for loops should be used to keep the project running until the user wishes to end.
 	 At least 3 of the loops mentioned should be used. (15 points)
+FORLOOP:     CLASS: Character   LINE: 56
+WHILE:       CLASS: GameManager LINE: 83
+DOWHILE:     CLASS: Main        LINE: 73
+ENCHANCEFOR: CLASS: Main        LINE: 142
+
+
 
 3. All values used in the program should be stored in variables. Whether value is local or class level, there should be 
 	variables used with no "literal" values. (10 points)
+This is done everywhere, how would i be able to comment all of the instances?
+You did say using literals in constructors was OK, and the fancyText() method in the GameManager just is a system.out.println
+but with thread.sleep()'s in between each character, if you consider that not using all literals, you are the definition of Satan. don't hate me.
+
+
 
 4. Methods: In addition to the main method there should be at least 3 other methods in the main class. These methods need 
 	to receive AND return values. (15 points)
+METHOD 1: Int Selector()                            <--- Returns LINE: 87
+METHOD 2: File[] getFilesFromFolder(String folder)  <--- receives AND returns LINE 205
+METHOD 3: void displayUpdateLogs()                  <--- Returns (void, but returns) LINE: 139
+
+
 
 5. Classes: There should be at least least 1 other class in your project with a minimum of 3 attributes, 3 behaviors, 
 	and at least 1 overloaded constructor and the default constructor. Objects of the class should be used in the 
 	application. (20 points)
+CLASS 1:Character
+CLASS 2:Item
+CLASS 3:Inventory
+CLass 4:GameManager
+
+
 
 6. Arrays: You need to use at least a single dimensional array and a multi dimensional array somewhere in the application. 
 	There must also be an array that stores a collection of one of the classes you create. (15 points)
+SINGLE: DEFAULT_INVENTORY[] <--- The default inventory of the character. CLASS: CharacterInventory  LINE: 21
+MULTI: inv[][]              <--- The Inventory of the character          CLASS: Inventory           LINE: 21
+COLLECTION OF CUSTOM OBJECTS: weapons[] <--- Collection of Weapons in the user inventory    CLASS: CharacterInventory   LINE: 27
 
 7. Selections: If/else AND switch statements should be used somewhere in the application. (10 points)
+    SWITCH: CLASS: GameManager  LINE: 163
+    IFELSE: CLASS: GameManager  LINE: 173
+
+
 
 8. There must be a static variable used somewhere. (10 points)
+    literally ALL of EventManager.... just look in EventManager. like, its only static variables.
+
 
 9. Design: The project cannot be just a demonstration of all of the items mentioned here. It must be a well thought out 
 	application that makes sense, and each requirement is implemented in a logical way to compliment that design. (25 points)
+   This is a text Adventure game, so i guess that is a sensible application?
 
 10. Variables, Classes, and Methods use the proper casing - camelCase, UpperCamelCase, ALLUPPER... (10 points)
+   Mixture of ALLUPPER(constants) and camelCase. also, UpperCamelCase is called PascalCase... just incase you didn't know.
+
 
 11. Exception handling should be used to prevent your computer from crashing. (10 points)
+    InventoryTooSmallException makes it so the computer doesn't freak out if you try to put too much stuff into it.
 
 The project should be zipped and uploaded to this module.

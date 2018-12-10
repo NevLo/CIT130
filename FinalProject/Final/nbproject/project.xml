@@ -9,5 +9,25 @@
             </source-roots>
             <test-roots/>
         </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>ALLUPPER</word>
+            <word>camelCase</word>
+            <word>CharacterInventory</word>
+            <word>didn</word>
+            <word>displayUpdateLogs</word>
+            <word>doesn</word>
+            <word>DOWHILE</word>
+            <word>ENCHANCEFOR</word>
+            <word>EventManager</word>
+            <word>fancyText</word>
+            <word>FORLOOP</word>
+            <word>GameManager</word>
+            <word>getFilesFromFolder</word>
+            <word>IFELSE</word>
+            <word>InventoryTooSmallException</word>
+            <word>PascalCase</word>
+            <word>println</word>
+            <word>UpperCamelCase</word>
+        </spellchecker-wordlist>
     </configuration>
 </project>

@@ -1,5 +1,5 @@
 package Utils;
-/**
+/**Effect enum. has some different effects.
  * 
  * @author Christian Pilley & Kallie Mendoza
  *

@@ -3,8 +3,9 @@ package Character;
 import Exceptions.InventoryTooSmallException;
 import Items.Item;
 import Items.NullItem;
+
 /**
- * 
+ *
  * @author Christian Pilley & Kallie Mendoza
  *
  */
@@ -21,6 +22,11 @@ public class ChestInventory extends Inventory {
         new Item(GOLD, randomGold())
     };
 
+    /**
+     * Sets the default inventory for the chest.
+     *
+     * @throws InventoryTooSmallException
+     */
     @Override
     public void setDefaultInventory() throws InventoryTooSmallException {
         clearInventory();
@@ -48,11 +54,4 @@ public class ChestInventory extends Inventory {
             throw new InventoryTooSmallException();
         }
     }
-
-    @Override
-    public void addToInventory(Item item) {
-        // TODO Auto-generated method stub
-
-    }
-
 }

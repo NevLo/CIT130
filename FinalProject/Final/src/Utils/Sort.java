@@ -1,6 +1,6 @@
 package Utils;
 /**
- * 
+ * Sort enum.
  * @author Christian Pilley & Kallie Mendoza
  *
  */
