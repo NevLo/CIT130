@@ -257,7 +257,53 @@ public class GameManager {
                             rations.setCount(rations.getCount() - 1);
                             return 0;
                         } else if (in == 'd') {
-                            return 5;
+                            fancyText("You check the crops. Most are dead except the apple tree which has a patch of green \n"
+                                    + "grass around it. What do you do? ");
+                            do {
+                                System.out.println("A] Inspect Apple Tree \n"
+                                        + "B] Inspect Dirt \n"
+                                        + "C] Head Towards family \n"
+                                        + "D] Head Towards Town Center \n"
+                                        + "\nI] Inventory \n"
+                                        + "O} Options");
+                                char in2 = scanner.nextLine().toLowerCase().toCharArray()[0];
+                                if (in2 != 'a' && in2 != 'b' && in2 != 'c' && in2 != 'd' && in2 != 'i' && in2 != 'o') {
+                                    System.out.println("Enter a correct choice.");
+                                } else if (in2 == 'a') {
+                                    fancyText("The apple tree is very healthy but not fully grown.\n"
+                                            + "It's leaves are a pleasant green color, and bugs seem to enjoy its fruit.\n"
+                                            + "The tree and grass surrounding it are the only plants alive on your farm.\n");
+                                    do {
+                                        System.out.println("A] Inspect Dirt \n"
+                                                + "B] Head to Family \n"
+                                                + "C] Head Towards Town Center \n"
+                                                + "\n I] Inventory \n"
+                                                + "O] Options");
+                                        char in3 = scanner.nextLine().toLowerCase().toCharArray()[0];
+                                        if (in3 != 'a' && in3 != 'b' && in3 != 'c' && in3 != 'i' && in3 != 'o') {
+                                            System.out.println("Enter a correct choice.");
+                                        } else if (in3 == 'a') {
+                                            //inspect dirt
+                                        } else if (in3 == 'b') {
+                                            return 1;
+                                        } else if (in3 == 'c') {
+                                            return 0;
+                                        } else if (in3 == 'i') {
+                                            OpenInventory();
+                                        } else if (in3 == 'o') {
+                                            OptionsMenu();
+                                        }
+                                    } while (!alive);
+                                } else if (in2 == 'b') {
+                                    return 1;
+                                } else if (in2 == 'c') {
+                                    return 0;
+                                } else if (in2 == 'i') {
+                                    OpenInventory();
+                                } else if (in2 == 'o') {
+                                    OptionsMenu();
+                                }
+                            } while (!false);
                         } else if (in == 'i') {
                             OpenInventory();
                         } else if (in == 'o') {
@@ -272,6 +318,7 @@ public class GameManager {
                     return 0;
                 }
             }
+
             case 2: {
                 if (contains(NPCS, "Dax") && contains(NPCS, "Crom") && contains(NPCS, "Valerii")) {
                     EventManager.canStartQuest = true;
@@ -418,6 +465,8 @@ public class GameManager {
                             System.out.println("Enter a correct choice.");
                         } else if (in == 'a') {
                             fight(mainCharacter, wolf);
+                            fancyText("After the fight you get disoriented, and head back to town.");
+                            return 0;
                         } else if (in == 'b') {
                             fancyText("You attempt to run from the wolf");
                             if (mainCharacter.getSpeed() > wolf.getSpeed()) {
@@ -461,7 +510,7 @@ public class GameManager {
                         } else if (in == 'o') {
                             OptionsMenu();
                         }
-                    } while (!false);
+                    } while (alive);
                 }
             }
             case 4: {
@@ -484,37 +533,40 @@ public class GameManager {
                     + "C] Forfeit\n"
                     + "O] Options");
             char in = scanner.nextLine().toLowerCase().toCharArray()[0];
+
             if (in != 'a' && in != 'b' && in != 'i' && in != 'o') {
                 System.out.println("Enter a correct choice.");
             } else if (in == 'a') {
+
                 if (mainCharacter2.getSpeed() >= fighter2.getSpeed()) {
-                    if (mainCharacterDamage - fighter2.getHealth() <= 0) {
+
+                    if (fighter2.getHealth() - mainCharacterDamage <= 0) {
                         fancyText("You have killed " + fighter2.getName());
                     }
                     fighter2.takeDamage(mainCharacterDamage, fighter2);
-                    if (fighter2.getHealth() > 0) {
+                    if (fighter2.getHealth() <= 0) {
                         return;
                     }
-                    if (fighterDamage - mainCharacter2.getHealth() <= 0) {
+                    if (mainCharacter2.getHealth() - fighterDamage / 5 <= 0) {
                         fancyText("You have been slain by " + fighter2.getName());
                     }
                     mainCharacter2.takeDamage(fighterDamage / 5, fighter2);
-                    if (mainCharacter2.getHealth() > 0) {
+                    if (mainCharacter2.getHealth() <= 0) {
                         return;
                     }
                 } else {
-                    if (fighterDamage - mainCharacter2.getHealth() <= 0) {
+                    if (mainCharacter2.getHealth() - fighterDamage / 2 <= 0) {
                         fancyText("You have been slain by " + fighter2.getName());
                     }
                     mainCharacter2.takeDamage(fighterDamage / 2, fighter2);
-                    if (mainCharacter2.getHealth() > 0) {
+                    if (mainCharacter2.getHealth() <= 0) {
                         return;
                     }
-                    if (mainCharacterDamage - fighter2.getHealth() <= 0) {
+                    if (fighter2.getHealth() - mainCharacterDamage <= 0) {
                         fancyText("You have killed " + fighter2.getName());
                     }
                     fighter2.takeDamage(mainCharacterDamage, fighter2);
-                    if (fighter2.getHealth() > 0) {
+                    if (fighter2.getHealth() <= 0) {
                         return;
                     }
                 }
