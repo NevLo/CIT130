@@ -1,7 +1,7 @@
 package Exceptions;
 
 /**
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  *
  *
  */

@@ -1,7 +1,7 @@
 package Utils;
 /**
  * Sort enum.
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  *
  */
 public enum Sort {

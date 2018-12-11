@@ -8,7 +8,7 @@ import Items.Weapon;
  * Character class allows the storage of data specific to the users's player and
  * NPC's/Enemies the user faces.
  *
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  *
  */
 //REQ 5 PART 1

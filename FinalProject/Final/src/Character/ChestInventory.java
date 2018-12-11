@@ -6,7 +6,7 @@ import Items.NullItem;
 
 /**
  *
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  *
  */
 public class ChestInventory extends Inventory {
@@ -21,7 +21,15 @@ public class ChestInventory extends Inventory {
     private final Item[] DEFAULT_INVENTORY = new Item[]{
         new Item(GOLD, randomGold())
     };
-
+    public ChestInventory(Item... items) {
+        inv = new Item[DEFAULT_HEIGHT][DEFAULT_WIDTH];
+        width = DEFAULT_WIDTH;
+        height = DEFAULT_HEIGHT;
+        for (Item i : items) {
+            addToInventory(i);
+        }
+        numItemStacks = items.length;
+    }
     /**
      * Sets the default inventory for the chest.
      *

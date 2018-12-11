@@ -5,7 +5,7 @@ import Utils.Rarity;
 /**
  * A child class of the item class, allows the item to hold a damage value.
  *
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  *
  */
 public class Weapon extends Item {

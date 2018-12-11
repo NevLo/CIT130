@@ -6,7 +6,7 @@ import Utils.Effect;
  * A child class of Item that allows the use of special effects to happen to the
  * user.
  *
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  *
  */
 public class Potion extends Item {
@@ -18,6 +18,11 @@ public class Potion extends Item {
      */
     public Potion() {
 
+    }
+
+    public Potion(Effect effect) {
+        this.effect = effect;
+        this.name = effect.toString();
     }
 
     /**

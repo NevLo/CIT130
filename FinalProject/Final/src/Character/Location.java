@@ -6,7 +6,7 @@ import Utils.intDuo;
  * I dont think this ever gets used. i dont know why its here to be honest...
  * but im scared to remove it.
  *
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  */
 public class Location {
 

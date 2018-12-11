@@ -6,6 +6,7 @@ import Exceptions.InventoryTooSmallException;
 
 import Items.Item;
 import Items.NullItem;
+import Items.Potion;
 import Items.Weapon;
 import Utils.intDuo;
 
@@ -13,7 +14,7 @@ import Utils.intDuo;
  * Base class for the inventory. houses some methods that will be in both child
  * classes.
  *
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  *
  */
 public abstract class Inventory {
@@ -32,7 +33,7 @@ public abstract class Inventory {
 
     protected int width;
     protected int height;
-    protected int numItemStacks = 0;
+    public int numItemStacks = 0;
 
     /**
      * sets the default inventory.
@@ -168,12 +169,19 @@ public abstract class Inventory {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 //if it is a nullitem, continue.
-                if (inv[i][j] instanceof NullItem) {
+                if (inv[i][j] instanceof NullItem || inv[i][j] == null) {
                     continue;
                 } // END if
-
-                Item temp = inv[i][j];
-                System.out.print(temp.getItemName() + " x" + temp.getCount() + "\t");
+                if(inv[i][j] instanceof Weapon){
+                    Weapon temp = (Weapon) inv[i][j];
+                    System.out.print(temp.getItemName() + " x" + temp.getCount() + "\t");
+                } else if(inv[i][j] instanceof Potion){    
+                    Potion temp = (Potion) inv[i][j];
+                    System.out.print(temp.getItemName() + " x" + temp.getCount() + "\t");
+                } else {
+                    Item temp = inv[i][j];
+                    System.out.print(temp.getItemName() + " x" + temp.getCount() + "\t");
+                }
             }// END for
             System.out.println();
         } // END for

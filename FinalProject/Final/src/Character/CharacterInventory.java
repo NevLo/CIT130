@@ -12,7 +12,7 @@ import Utils.Sort;
  * Character Inventory is the inventory of the character is extends the
  * Inventory class and is a sister class to the ChestInventory
  *
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  */
 public class CharacterInventory extends Inventory {
 
@@ -53,6 +53,7 @@ public class CharacterInventory extends Inventory {
         for (Item i : items) {
             addToInventory(i);
         }
+        numItemStacks = items.length;
     }
 
     /**

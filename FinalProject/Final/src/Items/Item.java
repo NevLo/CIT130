@@ -6,7 +6,7 @@ import Utils.Rarity;
  * Item class! allows items to be a thing. Has 4 fields: Name, Count, Rarity,
  * and Value.
  *
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  *
  */
 public class Item {
@@ -57,7 +57,20 @@ public class Item {
     public String getItemName() {
         return name;
     }
-
+    /**
+     * Setter for the value
+     * @param value 
+     */
+    public Item setValue(float value){
+        this.value = value;
+        return this;
+    }/**
+     * Getter for the value.
+     * @return 
+     */
+    public float getValue(){
+        return value;
+    }
     /**
      * getter for the count.
      *
@@ -72,14 +85,15 @@ public class Item {
      *
      * @param count
      */
-    public void setCount(int count) {
+    public Item setCount(int count) {
         this.count = count;
+        return this;
     }
 
     /**
      * Overridden equals method.
      *
-     * @param item
+     * @param obj
      * @return
      */
     @Override

@@ -60,7 +60,7 @@ import java.util.Scanner;
 @SuppressWarnings("unused")
 /**
  *
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  *
  */
 public class Main {

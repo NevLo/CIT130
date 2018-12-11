@@ -1,7 +1,7 @@
 package Utils;
 /**Effect enum. has some different effects.
  * 
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  *
  */
 public enum Effect {

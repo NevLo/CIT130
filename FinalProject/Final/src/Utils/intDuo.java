@@ -4,7 +4,7 @@ package Utils;
  * Intduo is the only real utility class, its used for vector positioning, 2d
  * array addressing and probably something else.
  *
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  */
 public class intDuo {
 

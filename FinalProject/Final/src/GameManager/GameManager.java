@@ -5,19 +5,23 @@ import java.util.Scanner;
 
 import Character.Character;
 import Character.CharacterInventory;
+import Character.ChestInventory;
 import FinalProject.Main;
 import Items.Item;
+import Items.Potion;
 import Items.Weapon;
+import Utils.Effect;
+import Utils.intDuo;
 
 @SuppressWarnings("unused")
 /**
  *
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  *
  */
 public class GameManager {
 
-    private static int textSpeed = 5;
+    private static int textSpeed = 1;
     private static final int[] textSpeeds = {50, 40, 30, 20, 10};
     private static boolean alive;
     private static int points;
@@ -139,16 +143,121 @@ public class GameManager {
     }
 
     private static void ShopMenu(String shop) {
+
         int amountOfGold = mainCharacter.getInventory().itemAt(mainCharacter.getInventory().searchForItem(new Item("Gold"))).getCount();
+
         switch (shop) {
             case "Armory": {
+                CharacterInventory arms = new CharacterInventory(
+                        new Weapon[]{
+                            new Weapon("Gold Sword", 20),
+                            new Weapon("Steel Rapier", 15),
+                            new Weapon("Wood Sword", 4)
+                        });
+                System.out.println(arms.numItemStacks);
+                arms.displayInventory();
 
+                do {
+                    fancyText("Dax: What would you like to buy?");
+                    System.out.println("1, 2 or 3?");
+                    System.out.print(">>> ");
+                    char in = scanner.nextLine().toLowerCase().toCharArray()[0];
+                    if (in != '1' && in != '2' && in != '3') {
+                        System.out.println("Enter a correct choice.");
+                    } else if (in == '1') {
+                        if (amountOfGold >= arms.itemAt(new intDuo(0, 0)).getValue()) {
+                            mainCharacter.getInventory().addToInventory(arms.itemAt(new intDuo(0, 0)));
+                        } else {
+                            fancyText("You dont have enough gold to buy this item!");
+                        }
+                    } else if (in == '2') {
+                        if (amountOfGold >= arms.itemAt(new intDuo(0, 1)).getValue()) {
+                            mainCharacter.getInventory().addToInventory(arms.itemAt(new intDuo(0, 1)));
+                        } else {
+                            fancyText("You dont have enough gold to buy this item!");
+                        }
+                    } else if (in == '3') {
+                        if (amountOfGold >= arms.itemAt(new intDuo(0, 2)).getValue()) {
+                            mainCharacter.getInventory().addToInventory(arms.itemAt(new intDuo(0, 2)));
+                        } else {
+                            fancyText("You dont have enough gold to buy this item!");
+                        }
+                    } else {
+                        return;
+                    }
+                } while (!false);
             }
             case "Butchery": {
-
+                ChestInventory butch = new ChestInventory(
+                        new Item("Apple", 50),
+                        new Item("Corn", 4),
+                        new Weapon("Hoe of Growth", 4).setValue(3f));
+                butch.displayInventory();
+                do {
+                    fancyText("Crom: What would you like to buy?");
+                    System.out.println("1, 2 or 3?");
+                    System.out.print(">>> ");
+                    char in = scanner.nextLine().toLowerCase().toCharArray()[0];
+                    if (in != '1' && in != '2' && in != '3') {
+                        System.out.println("Enter a correct choice.");
+                    } else if (in == '1') {
+                        if (amountOfGold >= butch.itemAt(new intDuo(0, 0)).getValue()) {
+                            mainCharacter.getInventory().addToInventory(butch.itemAt(new intDuo(0, 0)));
+                        } else {
+                            fancyText("You dont have enough gold to buy this item!");
+                        }
+                    } else if (in == '2') {
+                        if (amountOfGold >= butch.itemAt(new intDuo(0, 1)).getValue()) {
+                            mainCharacter.getInventory().addToInventory(butch.itemAt(new intDuo(0, 1)));
+                        } else {
+                            fancyText("You dont have enough gold to buy this item!");
+                        }
+                    } else if (in == '3') {
+                        if (amountOfGold >= butch.itemAt(new intDuo(0, 2)).getValue()) {
+                            mainCharacter.getInventory().addToInventory(butch.itemAt(new intDuo(0, 2)));
+                        } else {
+                            fancyText("You dont have enough gold to buy this item!");
+                        }
+                    } else {
+                        return;
+                    }
+                } while (!false);
             }
             case "Apothecary":
-
+                ChestInventory apoc = new ChestInventory(
+                        new Potion(Effect.health),
+                        new Potion(Effect.speed),
+                        new Item("Herbs"));
+                apoc.displayInventory();
+                do {
+                    fancyText("Valerii: What would you like to buy?");
+                    System.out.println("1, 2 or 3?");
+                    System.out.print(">>> ");
+                    char in = scanner.nextLine().toLowerCase().toCharArray()[0];
+                    if (in != '1' && in != '2' && in != '3') {
+                        System.out.println("Enter a correct choice.");
+                    } else if (in == '1') {
+                        if (amountOfGold >= apoc.itemAt(new intDuo(0, 0)).getValue()) {
+                            mainCharacter.getInventory().addToInventory(apoc.itemAt(new intDuo(0, 0)));
+                        } else {
+                            fancyText("You dont have enough gold to buy this item!");
+                        }
+                    } else if (in == '2') {
+                        if (amountOfGold >= apoc.itemAt(new intDuo(0, 1)).getValue()) {
+                            mainCharacter.getInventory().addToInventory(apoc.itemAt(new intDuo(0, 1)));
+                        } else {
+                            fancyText("You dont have enough gold to buy this item!");
+                        }
+                    } else if (in == '3') {
+                        if (amountOfGold >= apoc.itemAt(new intDuo(0, 2)).getValue()) {
+                            mainCharacter.getInventory().addToInventory(apoc.itemAt(new intDuo(0, 2)));
+                        } else {
+                            fancyText("You dont have enough gold to buy this item!");
+                        }
+                    } else {
+                        return;
+                    }
+                } while (!false);
         }
 
     }
@@ -436,6 +545,10 @@ public class GameManager {
                                 OptionsMenu();
                             }
                         } while (!false);
+                    } else if(in == 'i'){
+                        OpenInventory();
+                    } else if(in == 'o'){
+                        OptionsMenu();
                     } else {
                         return 0;
                     }

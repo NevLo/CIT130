@@ -7,7 +7,7 @@ package GameManager;
  * The Event Manager is a class holding a bunch of boolean values that control
  * the flow of the story
  *
- * @author Christian Pilley & Kallie Mendoza
+ * @author Christian Pilley, Kallie Mendoza
  */
 public class EventManager {
     //REQ 8. Like. ALL here.
