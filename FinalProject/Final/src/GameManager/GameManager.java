@@ -356,8 +356,8 @@ public class GameManager {
                             } while (!false);
                             //return 4;
                         } else if (in == 'c') {
-                            fancyText("You decide to help out with the kids. It�s now night and you are extremely fatigued.\n"
-                                    + "You have eaten with your family using 1 ration and now it�s time to rest.\n"
+                            fancyText("You decide to help out with the kids. It is now night and you are extremely fatigued.\n"
+                                    + "You have eaten with your family using 1 ration and now it is time to rest.\n"
                                     + "Before you get in bed your wife thanks you for helping with the children,\n"
                                     + "however you decided to take care of the children rather than try to find a way to feed your family.\n"
                                     + "She kicks you out in the morning. You head back to town, a vagabond.");
